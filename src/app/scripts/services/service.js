@@ -17,7 +17,7 @@
 
         /**
          * @ngdoc method
-         * @name options
+         * @name guid
          * @methodOf fs.fsUtil
          * @returns {string} A random string
          */
