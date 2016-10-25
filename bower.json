@@ -1,0 +1,16 @@
+{
+  "name": "fs-angular-util",
+  "description": "",
+  "main": [
+    "dist/util.js"
+  ],
+  "authors": [
+    "Firestitch Inc."
+  ],
+  "license": "MIT",
+  "ignore": [
+    "src",
+    ".gitignore"
+  ],
+  "private": false
+}
