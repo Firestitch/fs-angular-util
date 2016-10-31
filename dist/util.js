@@ -30,5 +30,21 @@
             });
         }
 
+        /**
+         * @ngdoc method
+         * @name round
+         * @methodOf fs.fsUtil
+         * @param {decimal} number The number to be rounded
+         * @param {integer} precision How many decimal places to round
+         * @returns {integer} Rounded number
+         */
+		function round(number, precision) {
+		    var factor = Math.pow(10, precision);
+		    var tempNumber = number * factor;
+		    var roundedTempNumber = Math.round(tempNumber);
+		    return roundedTempNumber / factor;
+		}
+
+
     });
 })();
