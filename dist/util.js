@@ -12,7 +12,8 @@
     angular.module('fs-angular-util',[])
     .factory('fsUtil', function($location) {
         var service = {
-            guid: guid
+            guid: guid,
+            round: round
         };
 
         return service;
@@ -39,12 +40,11 @@
          * @returns {integer} Rounded number
          */
 		function round(number, precision) {
+			precision = precision || 0;
 		    var factor = Math.pow(10, precision);
 		    var tempNumber = number * factor;
 		    var roundedTempNumber = Math.round(tempNumber);
 		    return roundedTempNumber / factor;
 		}
-
-
     });
 })();
