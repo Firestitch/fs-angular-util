@@ -13,7 +13,7 @@
         var service = {
             guid: guid,
             round: round,
-            synchronous: synchronous
+            resolve: resolve
         };
 
         return service;
@@ -50,12 +50,14 @@
         /**
          * @ngdoc method
          * @methodOf fs.fsUtil
-         * @name synchronous
+         * @name resolve
          * @param {promise} promise The promise to be used
+         * @param {object|array} defaults The default value/object type for the resolved value
          * @returns {object} An object that is extened when the promise resolves
          */
-		function synchronous(promise) {
-			var result = {};
+		function resolve(promise,defaults) {
+			defaults = defaults || [];
+			var result = defaults;
 			promise.then(function(data) {
 				angular.extend(result,data);
 			});

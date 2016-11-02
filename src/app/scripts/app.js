@@ -24,7 +24,6 @@ angular
         templateUrl: 'views/404.html',
         controller: 'DemoCtrl'
     });
-
 })
 .run(function ($rootScope, BOWER) {
     $rootScope.app_name = BOWER.name;
