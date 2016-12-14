@@ -11,7 +11,9 @@
         var service = {
             guid: guid,
             round: round,
-            resolve: resolve
+            resolve: resolve,
+            int: int,
+            float: float
         };
 
         return service;
@@ -60,6 +62,37 @@
 				angular.extend(result,data);
 			});
 			return result;
+		}
+
+        /**
+         * @ngdoc method
+         * @methodOf fs.fsUtil
+         * @name int
+         * @param {mixed} value The value to be converted to an integer
+         * @returns {int} The converted int
+         */
+		function int(value) {
+			var value = parseInt(value);
+			if(isNaN(value)) {
+				value = 0;
+			}
+			return value;
+		}
+
+
+        /**
+         * @ngdoc method
+         * @methodOf fs.fsUtil
+         * @name float
+         * @param {mixed} value The value to be converted to an float
+         * @returns {int} The converted float
+         */
+		function float(value) {
+			var value = parseFloat(value);
+			if(isNaN(value)) {
+				value = 0;
+			}
+			return value;
 		}
     });
 })();
