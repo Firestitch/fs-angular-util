@@ -15,7 +15,8 @@
             round: round,
             resolve: resolve,
             int: int,
-            float: float
+            float: float,
+            string: string
         };
 
         return service;
@@ -86,7 +87,7 @@
          * @ngdoc method
          * @methodOf fs.fsUtil
          * @name float
-         * @param {mixed} value The value to be converted to an float
+         * @param {mixed} value The value to be converted to a float
          * @returns {int} The converted float
          */
 		function float(value) {
@@ -96,5 +97,21 @@
 			}
 			return value;
 		}
+
+
+        /**
+         * @ngdoc method
+         * @methodOf fs.fsUtil
+         * @name string
+         * @param {mixed} value The value to be converted to a string
+         * @returns {string} The converted string
+         */
+  		function string(string) {
+
+  			if(string===null || string===undefined)
+  				string = '';
+
+  			return string.toString();
+  		}
     });
 })();
