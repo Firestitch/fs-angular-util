@@ -30,7 +30,8 @@
             int: int,
             float: float,
             string: string,
-            isEmpty: isEmpty
+            isEmpty: isEmpty,
+			isInt: isInt
         };
 
         return service;
