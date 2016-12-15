@@ -14,7 +14,8 @@
             resolve: resolve,
             int: int,
             float: float,
-            string: string
+            string: string,
+            isEmpty: isEmpty
         };
 
         return service;
@@ -111,5 +112,18 @@
 
   			return string.toString();
   		}
+
+        /**
+         * @ngdoc method
+         * @methodOf fs.fsUtil
+         * @name isEmpty
+         * @description Tests if the value is undefined, null, '', {}, [], 0, '0'
+         * @param {mixed} value The value to be tested if is empty.
+         * @returns {boolean} The result of the empty test
+         */
+        function isEmpty(value) {
+            return value===undefined || value===null || value==='' || angular.equals(value, {}) || angular.equals(value, []) || value===0 || value==='0';
+        }
+
     });
 })();
