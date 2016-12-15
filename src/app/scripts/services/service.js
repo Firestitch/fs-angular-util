@@ -6,7 +6,7 @@
      * @name fs.fsUtil
      * @description A collection of utility functions
      */
-    angular.module('fs-angular-util',[])
+    angular.module('fs-angular-util')
     .factory('fsUtil', function() {
         var service = {
             guid: guid,
