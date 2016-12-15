@@ -4,6 +4,9 @@
   "main": [
     "dist/util.js"
   ],
+  "dependencies": {
+    "fs-angular-math": "^1.0.0"
+  },
   "authors": [
     "Firestitch Inc."
   ],

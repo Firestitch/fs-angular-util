@@ -7,7 +7,7 @@
      * @description A collection of utility functions
      */
     angular.module('fs-angular-util')
-    .factory('fsUtil', function() {
+    .factory('fsUtil', function(fsMath) {
         var service = {
             guid: guid,
             round: round,
@@ -37,16 +37,15 @@
          * @ngdoc method
          * @methodOf fs.fsUtil
          * @name round
+         * @description This method has been deprecated. Please use fsMath.round()
+         * @deprecated
          * @param {decimal} number The number to be rounded
          * @param {integer} precision How many decimal places to round
          * @returns {integer} Rounded number
          */
 		function round(number, precision) {
-			precision = precision || 0;
-		    var factor = Math.pow(10, precision);
-		    var tempNumber = number * factor;
-		    var roundedTempNumber = Math.round(tempNumber);
-		    return roundedTempNumber / factor;
+			console.warn('fsUtil.round() as been deprecated. Please use filter fsMath.round()');
+			return fsMath.round(number,precision);
 		}
 
         /**
@@ -118,12 +117,28 @@
          * @methodOf fs.fsUtil
          * @name isEmpty
          * @description Tests if the value is undefined, null, '', {}, [], 0, '0'
-         * @param {mixed} value The value to be tested if is empty.
-         * @returns {boolean} The result of the empty test
+         * @param {mixed} value The value to be tested.
+         * @returns {boolean} The result of the test
          */
         function isEmpty(value) {
             return value===undefined || value===null || value==='' || angular.equals(value, {}) || angular.equals(value, []) || value===0 || value==='0';
         }
+
+        /**
+         * @ngdoc method
+         * @methodOf fs.fsUtil
+         * @name isInt
+         * @description Validates that the value is an int
+         * @param {mixed} value The value to be tested
+         * @returns {boolean} The result of the test
+         */
+		function isInt(value){
+			if(typeof Number != 'undefined') {
+				return Number.isInteger(value);
+			}
+
+			return value === + value && value === (value|0);
+		}
 
     });
 })();

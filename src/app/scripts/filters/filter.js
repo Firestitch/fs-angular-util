@@ -1,16 +1,13 @@
 (function () {
     'use strict';
 
-  	/**
-     * @ngdoc filter
-     * @name fs.filter:fsUtilRound
-     * @param {number} number The number to be rounded
-	 */
-	angular.module('fs-angular-util',[])
-	.filter('fsUtilRound',function (fsUtil) {
+	angular.module('fs-angular-util',['fs-angular-math'])
+	.filter('fsUtilRound',function (fsMath) {
   		return function(number,precision) {
-	    	return fsUtil.round(number,precision);
+  			console.warn('fsUtilRound as been deprecated. Please use filter fsMathRound');
+	    	return fsMath.round(number,precision);
 	    }
   	});
 
 })();
+
