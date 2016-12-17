@@ -147,14 +147,19 @@
          * @name isInt
          * @description Validates that the value is an int
          * @param {mixed} value The value to be tested
+         * @param {boolean} [type=false] Also match the type
          * @returns {boolean} The result of the test
          */
-		function isInt(value){
-			if(typeof Number != 'undefined') {
-				return Number.isInteger(value);
-			}
+		function isInt(value,type) {
+			var int = !!string(value).match(/^\d+$/);
 
-			return value === + value && value === (value|0);
+			if(!int)
+				return false;
+
+			if(type)
+				return Number.isInteger(value);
+
+			return true;
 		}
 
         /**
