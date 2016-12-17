@@ -4,9 +4,6 @@
 angular.module('app')
   .controller('DemoCtrl', function ($scope, fsUtil, $q) {
 
-
-    $scope.text = '';
-
     $scope.submit = function() {
         $scope.text = fsUtil.guid();
     }
@@ -28,5 +25,12 @@
     	resolve({ name: 'bob' });
     }),{});
 
+
+    $scope.numeric1 = fsUtil.isNumeric('2.6');
+    $scope.numeric2 = fsUtil.isNumeric('6.');
+    $scope.numeric3 = fsUtil.isNumeric('6.asd');
+    $scope.numeric4 = fsUtil.isNumeric('500');
+
+debugger;
 });
 

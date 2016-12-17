@@ -31,7 +31,8 @@
             float: float,
             string: string,
             isEmpty: isEmpty,
-			isInt: isInt
+			isInt: isInt,
+			isNumeric: isNumeric
         };
 
         return service;
@@ -154,6 +155,18 @@
 			}
 
 			return value === + value && value === (value|0);
+		}
+
+        /**
+         * @ngdoc method
+         * @methodOf fs.fsUtil
+         * @name isNumeric
+         * @description Validates if the value is numeric. ie. 2.5, 100,
+         * @param {mixed} value The value to be tested
+         * @returns {boolean} The result of the test
+         */
+		function isNumeric(value){
+			return !!string(value).match(/^\d+\.?\d*$/);
 		}
 
     });
