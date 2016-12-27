@@ -32,8 +32,11 @@
             string: string,
             isEmpty: isEmpty,
 			isInt: isInt,
-			isNumeric: isNumeric
-        };
+			isNumeric: isNumeric,
+			interval: interval,
+			clearInterval: clearInterval
+        },
+        intervals = {};
 
         return service;
 
@@ -172,6 +175,44 @@
          */
 		function isNumeric(value){
 			return !!string(value).match(/^\d+\.?\d*$/);
+		}
+
+
+        /**
+         * @ngdoc method
+         * @methodOf fs.fsUtil
+         * @name interval
+         * @description Runs a function over and over based on a delay
+         * @param {function} fn The function to be ran
+         * @param {int} delay The delay in milliseconds before running the next function
+         * @param {string} name The name of the interval
+         */
+		function interval(fn,delay,name) {
+			var instance = setInterval(fn,delay);
+
+			if(name) {
+				intervals[name] = instance;
+			}
+
+			return function() {
+				window.clearInterval(instance);
+			}
+		}
+
+        /**
+         * @ngdoc method
+         * @methodOf fs.fsUtil
+         * @name clearInterval
+         * @description Runs a function over and over based on a delay
+         * @param {string} name The name of the interval to be cleared
+         */
+		function clearInterval(name) {
+
+			var instance = intervals[name];
+
+			if(instance) {
+				window.clearInterval(instance);
+			}
 		}
 
     });

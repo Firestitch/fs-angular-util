@@ -31,6 +31,16 @@
     $scope.numeric3 = fsUtil.isNumeric('6.asd');
     $scope.numeric4 = fsUtil.isNumeric('500');
 
-debugger;
+
+    $scope.startInterval = function() {
+    	fsUtil.interval(function() {
+    		console.log("LOG");
+    	},500,'name');
+    }
+
+    $scope.stopInterval = function() {
+    	fsUtil.clearInterval('name');
+    }
+
 });
 
