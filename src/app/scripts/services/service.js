@@ -18,6 +18,7 @@
             isEmpty: isEmpty,
 			isInt: isInt,
 			isNumeric: isNumeric,
+			isObject: isObject,
 			interval: interval,
 			clearInterval: clearInterval
         },
@@ -153,12 +154,25 @@
         /**
          * @ngdoc method
          * @methodOf fs.fsUtil
+         * @name isObject
+         * @description Validates that the value is strictly an object and not an array
+         * @param {mixed} value The value to be tested
+         * @returns {boolean} The result of the test
+         */
+		function isObject(value) {
+			return typeof value === 'object' && !(value instanceof Array);
+		}
+
+
+        /**
+         * @ngdoc method
+         * @methodOf fs.fsUtil
          * @name isNumeric
          * @description Validates that the value is a number
          * @param {mixed} value The value to be tested
          * @returns {boolean} The result of the test
          */
-		function isNumeric(value){
+		function isNumeric(value) {
 			return string(value).length && !!string(value).match(/^-?\d*\.?\d*$/);
 		}
 
