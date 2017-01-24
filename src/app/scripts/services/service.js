@@ -127,7 +127,7 @@
          * @returns {boolean} The result of the test
          */
         function isEmpty(value) {
-            return value===undefined || value===null || value==='' || angular.equals(value, {}) || angular.equals(value, []) || value===0 || value==='0';
+            return value===undefined || value===null || value==='' || (isObject(value) && !Object.keys(value).length) || angular.equals(value, []) || value===0 || value==='0';
         }
 
         /**
