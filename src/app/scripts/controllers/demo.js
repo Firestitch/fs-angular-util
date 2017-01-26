@@ -42,5 +42,10 @@
     	fsUtil.clearInterval('name');
     }
 
+    $scope.isArray = fsUtil.isArray([1,2]) && !fsUtil.isArray({}) && fsUtil.isArray([]) && fsUtil.isArray([function(){}]);
+    $scope.isObject = fsUtil.isObject({}) && !fsUtil.isObject([]) && fsUtil.isObject({ x: true }) && fsUtil.isObject({ x: function() {} });
+
+
+
 });
 

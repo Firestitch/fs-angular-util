@@ -19,6 +19,7 @@
 			isInt: isInt,
 			isNumeric: isNumeric,
 			isObject: isObject,
+			isArray: isArray,
 			interval: interval,
 			clearInterval: clearInterval
         },
@@ -160,7 +161,19 @@
          * @returns {boolean} The result of the test
          */
 		function isObject(value) {
-			return typeof value === 'object' && !(value instanceof Array);
+			return typeof value === 'object' && !isArray(value);
+		}
+
+		/**
+         * @ngdoc method
+         * @methodOf fs.fsUtil
+         * @name isArray
+         * @description Validates that the value is strictly an array and not an object
+         * @param {mixed} value The value to be tested
+         * @returns {boolean} The result of the test
+         */
+		function isArray(value) {
+			return value instanceof Array;
 		}
 
 
