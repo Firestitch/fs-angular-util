@@ -14,8 +14,10 @@
 	   					'{}': fsUtil.isEmpty({}),
 	   					'[]': fsUtil.isEmpty([]),
 	   					'0': fsUtil.isEmpty(0),
-	   					'\'0\'': fsUtil.isEmpty('0') };
-
+	   					'\'0\'': fsUtil.isEmpty('0'),
+	   					'new Date()': fsUtil.isEmpty(new Date()),
+	   					'{ 1: 0 }': fsUtil.isEmpty({ 1: 0 }),
+	   					'new myObject()': fsUtil.isEmpty(new myObject()) };
 
     $scope.resolve = fsUtil.resolve($q(function(resolve) {
     	resolve([1,2,3]);
@@ -46,6 +48,8 @@
     $scope.isObject = fsUtil.isObject({}) && !fsUtil.isObject([]) && fsUtil.isObject({ x: true }) && fsUtil.isObject({ x: function() {} });
 
 
-
+    function myObject() {
+    	this.test = 'test';
+    }
 });
 
