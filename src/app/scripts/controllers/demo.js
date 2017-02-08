@@ -19,6 +19,12 @@
 	   					'{ 1: 0 }': fsUtil.isEmpty({ 1: 0 }),
 	   					'new myObject()': fsUtil.isEmpty(new myObject()) };
 
+   	$scope.isa = { 	'string - ""': fsUtil.isString(''),
+   					'string - new String()': fsUtil.isString(new String('')),
+   					'object - {}': fsUtil.isObject({}),
+   					'object - []': fsUtil.isObject([]),
+   					'object - {x:true}': fsUtil.isObject({ x: true }) };
+
     $scope.resolve = fsUtil.resolve($q(function(resolve) {
     	resolve([1,2,3]);
     }));
@@ -45,7 +51,6 @@
     }
 
     $scope.isArray = fsUtil.isArray([1,2]) && !fsUtil.isArray({}) && fsUtil.isArray([]) && fsUtil.isArray([function(){}]);
-    $scope.isObject = fsUtil.isObject({}) && !fsUtil.isObject([]) && fsUtil.isObject({ x: true }) && fsUtil.isObject({ x: function() {} });
 
 
     function myObject() {

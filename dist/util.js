@@ -35,6 +35,7 @@
 			isNumeric: isNumeric,
 			isObject: isObject,
 			isArray: isArray,
+			isString: isString,
 			interval: interval,
 			clearInterval: clearInterval
         },
@@ -184,6 +185,19 @@
          */
 		function isObject(value) {
 			return typeof value === 'object' && !isArray(value);
+		}
+
+
+        /**
+         * @ngdoc method
+         * @methodOf fs.fsUtil
+         * @name isString
+         * @description Validates that the value is a string
+         * @param {mixed} value The value to be tested
+         * @returns {boolean} The result of the test
+         */
+		function isString(value) {
+			return typeof value === 'string' || value instanceof String;
 		}
 
 		/**
