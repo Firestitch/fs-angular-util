@@ -56,5 +56,14 @@
     function myObject() {
     	this.test = 'test';
     }
+
+    setTimeout(function() {
+		window.addEventListener("scroll", fsUtil.throttle(function()  { console.count("Throttled"); }, 100));
+		angular.element(document.querySelector('#debounce')).on('keypress',fsUtil.debounce(function(e) {
+			 console.log(angular.element(e.target).val());
+		},300));
+	});
+
+
 });
 

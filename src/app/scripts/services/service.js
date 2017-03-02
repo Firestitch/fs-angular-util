@@ -22,7 +22,9 @@
 			isArray: isArray,
 			isString: isString,
 			interval: interval,
-			clearInterval: clearInterval
+			clearInterval: clearInterval,
+			throttle: throttle,
+			debounce: debounce
         },
         intervals = {};
 
@@ -126,17 +128,18 @@
          * @name isEmpty
          * @description Tests if the value is undefined, null, '', {}, [], 0, '0'
          * @param {mixed} value The value to be tested.
+         * @param {object} options Options
+         * @param {boolean} options.zero When true '0' or 0 is not considered an empty value
          * @returns {boolean} The result of the test
          */
-        function isEmpty(value) {
-
+        function isEmpty(value,options) {
+        	options = options || {};
             return 	value===undefined ||
             		value===null ||
             		value==='' ||
             		(isObject(value) && (value.constructor.name=='Object' && !Object.keys(value).length)) ||
             		angular.equals(value, []) ||
-            		value===0 ||
-            		value==='0';
+            		(!options.zero && (value===0 || value==='0'));
         }
 
         /**
@@ -248,5 +251,49 @@
 			}
 		}
 
+        /**
+         * @ngdoc method
+         * @methodOf fs.fsUtil
+         * @name throttle
+         * @description Throttles a function call
+         * @param {function} func The callback function
+         * @param {integer} wait The time in ms that will block any new requests
+         */
+		function throttle(func, wait) {
+		    var waiting = false;                  // Initially, we're not waiting
+		    return function () {               // We return a throttled function
+		        if (!waiting) {                   // If we're not waiting
+		            func.call();           // Execute users function
+		            waiting = true;               // Prevent future invocations
+		            setTimeout(function () {   // After a period of time
+		                waiting = false;          // And allow future invocations
+		            }, wait);
+		        }
+		    }
+		}
+
+        /**
+         * @ngdoc method
+         * @methodOf fs.fsUtil
+         * @name debounce
+         * @description Returns a function, that, as long as it continues to be invoked, will not be triggered. The function will be called after it stops being called for N milliseconds.
+         * @param {function} func The callback function
+         * @param {integer} wait The time in ms that will block any new requests
+         * @param {boolean} immediate When true triggers the function on the leading edge, instead of the trailing.
+         */
+		function debounce(func, wait, immediate) {
+			var timeout;
+			return function() {
+				var context = this, args = arguments;
+				var later = function() {
+					timeout = null;
+					if (!immediate) func.apply(context, args);
+				};
+				var callNow = immediate && !timeout;
+				clearTimeout(timeout);
+				timeout = setTimeout(later, wait);
+				if (callNow) func.apply(context, args);
+			};
+		}
     });
 })();
