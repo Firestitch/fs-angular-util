@@ -141,17 +141,18 @@
          * @name isEmpty
          * @description Tests if the value is undefined, null, '', {}, [], 0, '0'
          * @param {mixed} value The value to be tested.
+         * @param {object} options Options
+         * @param {object} options.zero When true '0' or 0 is not considered an empty value
          * @returns {boolean} The result of the test
          */
-        function isEmpty(value) {
-
+        function isEmpty(value,options) {
+        	options = options || {};
             return 	value===undefined ||
             		value===null ||
             		value==='' ||
             		(isObject(value) && (value.constructor.name=='Object' && !Object.keys(value).length)) ||
             		angular.equals(value, []) ||
-            		value===0 ||
-            		value==='0';
+            		(!options.zero && (value===0 || value==='0'));
         }
 
         /**
