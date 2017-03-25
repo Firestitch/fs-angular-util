@@ -52,6 +52,9 @@
 
     $scope.isArray = fsUtil.isArray([1,2]) && !fsUtil.isArray({}) && fsUtil.isArray([]) && fsUtil.isArray([function(){}]);
 
+    $scope.isClass = fsUtil.isClass(new Date(),Date);
+    $scope.isClass = fsUtil.isClass(new Date(),'Date');
+    $scope.isClass = fsUtil.isClass(null,'Date');
 
     function myObject() {
     	this.test = 'test';

@@ -21,6 +21,7 @@
 			isObject: isObject,
 			isArray: isArray,
 			isString: isString,
+			isClass: isClass,
 			interval: interval,
 			clearInterval: clearInterval,
 			throttle: throttle,
@@ -172,7 +173,7 @@
          * @returns {boolean} The result of the test
          */
 		function isObject(value) {
-			return typeof value === 'object' && !isArray(value);
+			return value!==null && typeof value === 'object' && !isArray(value);
 		}
 
 
@@ -213,6 +214,37 @@
 			return string(value).length && !!string(value).match(/^-?\d*\.?\d*$/);
 		}
 
+        /**
+         * @ngdoc method
+         * @methodOf fs.fsUtil
+         * @name isClass
+         * @description Validates that the value is a string
+         * @param {mixed} value The value to be tested
+         * @param {class|string} cls The class to test against
+         * @returns {boolean} The result of the test
+         */
+		function isClass(value,cls) {
+
+			if(isObject(value)) {
+
+				if(isString(cls)) {
+
+					if(value.constructor) {
+						if(value.constructor.name===cls) {
+							return true;
+						}
+					}
+
+				} else {
+
+					if(value instanceof cls) {
+						return true;
+					}
+				}
+			}
+
+			return false;
+		}
 
         /**
          * @ngdoc method
