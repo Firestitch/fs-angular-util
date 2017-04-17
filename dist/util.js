@@ -39,6 +39,7 @@
 			isClass: isClass,
 			isBoolean: isBoolean,
 			interval: interval,
+			value: value,
 			clearInterval: clearInterval,
 			throttle: throttle,
 			debounce: debounce
@@ -273,6 +274,27 @@
          */
 		function isBoolean(value) {
 			return value===true || value===false;
+		}
+
+        /**
+         * @ngdoc method
+         * @methodOf fs.fsUtil
+         * @name value
+         * @description Returns the key value of the object
+         * @param {object} object The object to search
+         * @param {string} key The key to search by
+         * @param {object} def The default value if the key value doesn't not exist
+         */
+		function value(object,key,def) {
+
+			if(isObject(object) || isArray(object)) {
+
+				if(object.hasOwnProperty(key)) {
+					return object[key];
+				}
+			}
+
+			return def;
 		}
 
         /**
