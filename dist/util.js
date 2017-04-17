@@ -37,6 +37,7 @@
 			isArray: isArray,
 			isString: isString,
 			isClass: isClass,
+			isBoolean: isBoolean,
 			interval: interval,
 			clearInterval: clearInterval,
 			throttle: throttle,
@@ -259,6 +260,19 @@
 			}
 
 			return false;
+		}
+
+        /**
+         * @ngdoc method
+         * @methodOf fs.fsUtil
+         * @name isBoolean
+         * @description Validates that the value is a boolean
+         * @param {mixed} value The value to be tested
+         * @param {class|string} cls The class to test against
+         * @returns {boolean} The result of the test
+         */
+		function isBoolean(value) {
+			return value===true || value===false;
 		}
 
         /**
