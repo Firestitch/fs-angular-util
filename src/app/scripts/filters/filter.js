@@ -7,6 +7,11 @@
   			console.warn('fsUtilRound as been deprecated. Please use filter fsMathRound');
 	    	return fsMath.round(number,precision);
 	    }
+  	})
+  	.filter('fsUtilIsEmpty',function (fsUtil) {
+  		return function(value) {
+	    	return fsUtil.isEmpty(value);
+	    }
   	});
 
 })();

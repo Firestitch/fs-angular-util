@@ -27,6 +27,7 @@
 			clearInterval: clearInterval,
 			throttle: throttle,
 			debounce: debounce,
+			value: value,
 			KEY_CANCEL: 3,
 			KEY_HELP: 6,
 			KEY_BACKSPACE: 8,
@@ -295,6 +296,27 @@
          */
 		function isBoolean(value) {
 			return value===true || value===false;
+		}
+
+        /**
+         * @ngdoc method
+         * @methodOf fs.fsUtil
+         * @name value
+         * @description Returns the key value of the object
+         * @param {object} object The object to search
+         * @param {string} key The key to search by
+         * @param {object} def The default value if the key value doesn't not exist
+         */
+		function value(object,key,def) {
+
+			if(isObject(object) || isArray(object)) {
+
+				if(object.hasOwnProperty(key)) {
+					return object[key];
+				}
+			}
+
+			return def;
 		}
 
         /**

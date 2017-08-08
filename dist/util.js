@@ -7,10 +7,14 @@
   			console.warn('fsUtilRound as been deprecated. Please use filter fsMathRound');
 	    	return fsMath.round(number,precision);
 	    }
+  	})
+  	.filter('fsUtilIsEmpty',function (fsUtil) {
+  		return function(value) {
+	    	return fsUtil.isEmpty(value);
+	    }
   	});
 
 })();
-
 
 
 (function () {
@@ -39,10 +43,10 @@
 			isClass: isClass,
 			isBoolean: isBoolean,
 			interval: interval,
-			value: value,
 			clearInterval: clearInterval,
 			throttle: throttle,
 			debounce: debounce,
+			value: value,
 			KEY_CANCEL: 3,
 			KEY_HELP: 6,
 			KEY_BACKSPACE: 8,
