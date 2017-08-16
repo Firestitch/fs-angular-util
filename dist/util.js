@@ -55,6 +55,7 @@
 			clearInterval: clearInterval,
 			throttle: throttle,
 			debounce: debounce,
+			length: length,
 			value: value,
 			KEY_CANCEL: 3,
 			KEY_HELP: 6,
@@ -427,6 +428,18 @@
 				timeout = setTimeout(later, wait);
 				if (callNow) func.apply(context, args);
 			};
+		}
+
+		function length(object) {
+			if(isObject(object)) {
+				return Object.keys(object).length;
+			}
+
+			if(isArray(object)) {
+				return object.length;
+			}
+
+			return 0;
 		}
     });
 })();
