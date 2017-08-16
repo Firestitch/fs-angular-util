@@ -12,10 +12,19 @@
   		return function(value) {
 	    	return fsUtil.isEmpty(value);
 	    }
+  	})
+  	.filter('fsUtilLength',function (fsUtil) {
+  		return function(value) {
+	    	return fsUtil.length(value);
+	    }
+  	})
+  	.filter('fsUtilEquals',function (fsUtil) {
+  		return function(value1,value2) {
+	    	return angular.equals(value1,value2);
+	    }
   	});
 
 })();
-
 
 (function () {
     'use strict';
