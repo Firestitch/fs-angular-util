@@ -394,13 +394,13 @@
          * @param {integer} wait The time in ms that will block any new requests
          */
 		function throttle(func, wait) {
-		    var waiting = false;                  // Initially, we're not waiting
-		    return function () {               // We return a throttled function
-		        if (!waiting) {                   // If we're not waiting
-		            func.call();           // Execute users function
-		            waiting = true;               // Prevent future invocations
-		            setTimeout(function () {   // After a period of time
-		                waiting = false;          // And allow future invocations
+		    var waiting = false;                  	// Initially, we're not waiting
+		    return function() {               		// We return a throttled function
+		        if(!waiting) {                   	// If we're not waiting
+		            func.apply(null,arguments);     // Execute users function
+		            waiting = true;               	// Prevent future invocations
+		            setTimeout(function () {   		// After a period of time
+		                waiting = false;          	// And allow future invocations
 		            }, wait);
 		        }
 		    }
