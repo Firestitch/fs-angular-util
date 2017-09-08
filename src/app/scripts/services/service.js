@@ -414,5 +414,9 @@
 
 			return 0;
 		}
+
+		function boolean(value) {
+			return string(value).toLowerCase()!=='false' && !!value;
+		}
     });
 })();
