@@ -43,6 +43,7 @@
             int: int,
             float: float,
             string: string,
+            boolean: boolean,
             isEmpty: isEmpty,
 			isInt: isInt,
 			isNumeric: isNumeric,
@@ -406,6 +407,7 @@
 		    }
 		}
 
+
         /**
          * @ngdoc method
          * @methodOf fs.fsUtil
@@ -440,6 +442,10 @@
 			}
 
 			return 0;
+		}
+
+		function boolean(value) {
+			return string(value).toLowerCase()!=='false' && !!value;
 		}
     });
 })();

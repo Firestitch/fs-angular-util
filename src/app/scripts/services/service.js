@@ -15,6 +15,7 @@
             int: int,
             float: float,
             string: string,
+            boolean: boolean,
             isEmpty: isEmpty,
 			isInt: isInt,
 			isNumeric: isNumeric,
